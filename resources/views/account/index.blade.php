@@ -55,7 +55,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-default float-right">Create</button>
+                            <button type="submit" class="btn btn-primary float-right">Create</button>
                         </div>
                         <!-- /.card-footer -->
                     </form>

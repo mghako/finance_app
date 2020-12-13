@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="card card-info">
+                <div class="card card-dark">
                     <div class="card-header">
                         <h3 class="card-title">Create Transaction</h3>
                     </div>
@@ -59,7 +59,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-default float-right">Create</button>
+                            <button type="submit" class="btn btn-primary float-right">Create</button>
                         </div>
                         <!-- /.card-footer -->
                     </form>
