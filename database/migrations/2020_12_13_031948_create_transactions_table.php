@@ -17,11 +17,10 @@ class CreateTransactionsTable extends Migration
             $table->bigIncrements('id');
             $table->decimal('amount', 8, 2);
             $table->string('description');
-            $table->unsignedBigInteger('account_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             
-            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
