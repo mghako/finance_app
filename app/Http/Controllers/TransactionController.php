@@ -47,7 +47,6 @@ class TransactionController extends Controller
 
         DB::beginTransaction();
         try {
-
             Transaction::create([
                 'account_id' => $request->account,
                 'amount' => $request->amount,
