@@ -21,62 +21,34 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="card card-dark">
+            <div class="col-md-10 mx-auto">
+                <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Create Account</h3>
+                        <div class="card-title">
+                            Accounts List
+                        </div>
+                        <div class="card-tools">
+                            <a href="{{ route('accounts.create') }}" class="btn btn-info">Create</a>
+                        </div>
                     </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    <form class="form-horizontal" action="{{ route('accounts.store') }}" method="POST">
-                    @csrf
-                        <div class="card-body">
-                            {{-- Account Name --}}
-                            <div class="form-group row">
-                                <label for="inputAccountName" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputAccountName" name="name" placeholder="Account Name" autocomplete="off" REQUIRED>
-                                </div>
-                            </div>
-                            {{-- Account Number --}}
-                            <div class="form-group row">
-                                <label for="inputAccountNumber" class="col-sm-2 col-form-label">Number</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputAccountNumber" name="number" placeholder="Account Number" min="3" autocomplete="off" REQUIRED>
-                                </div>
-                            </div>
-                            {{-- Account Balance --}}
-                            <div class="form-group row">
-                                <label for="inputAccountBalance" class="col-sm-2 col-form-label">Balance</label>
-                                <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputAccountBalance" name="balance" placeholder="Account Balance" autocomplete="off" REQUIRED>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.card-body -->
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right">Create</button>
-                        </div>
-                        <!-- /.card-footer -->
-                    </form>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>Account Name</th>
+                                <th>Balance</th>
+                                <th>Setting</th>
+                            </tr>
+                            @foreach($accounts as $account)
+                            <tr>
+                                <td>{{ $account->name }}</td>
+                                <td>{{ $account->balance }}</td>
+                                <td><a href="{{ route('accounts.show', $account->id) }}" class="text-info"><i class="fas fa-eye"></i> View</a></td>
+                            </tr>
+                            @endforeach
+                        </table>
+                        {{ $accounts->links() }}
+                    </div>
                 </div>
-                
-            </div>
-            <div class="col-md-6">
-                <table class="table">
-                    <tr>
-                        <th>Account Name</th>
-                        <th>Setting</th>
-                    </tr>
-                    @foreach($accounts as $account)
-                    <tr>
-                        <td>{{ $account->name }}</td>
-                        <td><a href="{{ route('accounts.edit', $account->id) }}" class="text-warning"><i class="fas fa-edit"></i> Edit</a></td>
-                    </tr>
-                    @endforeach
-                </table>
-                {{-- pagination --}}
-                {{ $accounts->links() }}
             </div>
         </div>
     </div>

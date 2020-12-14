@@ -19,7 +19,8 @@ class AccountController extends Controller
 
     public function index()
     {
-        $accounts = Account::select(['name', 'id'])->paginate(5);
+        $accounts = Account::whereUserId(auth()->user()->id)->paginate(5);
+        
         return view('account.index', compact('accounts'));
     }
 
@@ -30,7 +31,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('account.create');
     }
 
     /**
@@ -62,7 +63,7 @@ class AccountController extends Controller
      */
     public function show(Account $account)
     {
-        //
+        return view('account.show', compact('account'));
     }
 
     /**
