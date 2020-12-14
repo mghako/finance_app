@@ -15,10 +15,7 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
     public function index()
     {  
         $accounts = auth()->user()->accounts()->select(['name', 'id'])->get();
