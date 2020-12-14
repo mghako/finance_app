@@ -17,10 +17,6 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
         $accounts = Account::select(['name', 'id'])->paginate(5);

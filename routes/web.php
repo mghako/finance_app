@@ -15,15 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
 // profile controller
-Route::get('/profile', 'ProfileController@index')->name('profiles.index');
+Route::get('/profile', 'ProfileController@index')->name('profiles.index')->middleware('verified');
 
-Route::resources([
-    'accounts' => 'AccountController',
-    'transactions' => 'TransactionController'
-]);
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::resources([
+        'accounts' => 'AccountController',
+        'transactions' => 'TransactionController'
+    ]);
+
+});
