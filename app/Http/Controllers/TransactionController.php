@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\DataTables\TransactionsDataTable;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DataTables;
 
 class TransactionController extends Controller
 {
@@ -16,11 +18,9 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function index()
+    public function index(TransactionsDataTable $dataTable)
     {  
-        $accounts = auth()->user()->accounts()->select(['name', 'id'])->get();
-        $transactions = auth()->user()->transactions()->latest()->take(3)->get();
-        return view('transaction.index', compact('accounts','transactions'));
+        return $dataTable->render('transaction.index');
     }
 
     /**
@@ -30,7 +30,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        $accounts = auth()->user()->accounts()->select(['name', 'id'])->get();
+        return view('transaction.create', compact('accounts'));
     }
 
     /**

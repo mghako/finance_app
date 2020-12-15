@@ -32,24 +32,13 @@
                         </div>
                     </div>
                     <div class="card-body table-responsive">
-                        <table class="table table-hover">
-                            <tr>
-                                <th>Account Name</th>
-                                <th>Balance</th>
-                                <th>Setting</th>
-                            </tr>
-                            @foreach($accounts as $account)
-                            <tr>
-                                <td>{{ $account->name }}</td>
-                                <td>{{ $account->balance }}</td>
-                                <td><a href="{{ route('accounts.show', $account->id) }}" class="text-info"><i class="fas fa-eye"></i> View</a></td>
-                            </tr>
-                            @endforeach
-                        </table>
-                        {{ $accounts->links() }}
+                        {{ $dataTable->table() }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('scripts')
+    {{$dataTable->scripts()}}
+@endpush

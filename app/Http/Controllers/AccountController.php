@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Account;
+use App\DataTables\AccountsDataTable;
+use App\DataTables\Scopes\AccountDataTableScope;
 use App\Http\Requests\StoreAccountRequest;
 use App\Http\Requests\UpdateAccountRequest;
 use Illuminate\Http\Request;
@@ -17,11 +19,9 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(AccountsDataTable $dataTable)
     {
-        $accounts = Account::whereUserId(auth()->user()->id)->paginate(5);
-        
-        return view('account.index', compact('accounts'));
+        return $dataTable->addScope(new AccountDataTableScope)->render('account.index');
     }
 
     /**
