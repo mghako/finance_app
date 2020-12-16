@@ -21,7 +21,11 @@ class AccountsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'accounts.action');
+            ->addColumn('action', function ($query) {
+                return '<a href="/accounts/'.$query->id.'" class="btn btn-xs btn-primary"><i class="fas fa-eye"></i> View</a>
+                        <a href="/accounts/delete/'.$query->id.'" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i> Delete</a>';
+            });
+            
     }
 
     /**
@@ -48,6 +52,9 @@ class AccountsDataTable extends DataTable
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(1)
+                    // ->addColumn('action',function ($data){
+                    //     return $this->getActionColumn($data);
+                    // })
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),
@@ -65,15 +72,16 @@ class AccountsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // Column::computed('action')
-            //       ->exportable(false)
-            //       ->printable(false)
-            //       ->width(60)
-            //       ->addClass('text-center'),
+            
             Column::make('id'),
             Column::make('name'),
             Column::make('number'),
             Column::make('created_at'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(120)
+                  ->addClass('text-center')
         ];
     }
 
@@ -86,4 +94,13 @@ class AccountsDataTable extends DataTable
     {
         return 'Accounts_' . date('YmdHis');
     }
+
+    // protected function getActionColumn($data): string
+    // {
+    //     // $showUrl = route('admin.brands.show', $data->id);
+    //     // $editUrl = route('admin.brands.edit', $data->id);
+    //     return "<a class='btn btn-warning' href='#'><i class='fas fa-edit'></i>Edit</a> 
+    //             <a class='btn btn-danger' href='#'><i class='fas fa-trash'></i>Delete</a>";
+    // }
+    
 }

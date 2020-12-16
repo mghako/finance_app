@@ -22,7 +22,6 @@ class TransactionController extends Controller
     {  
         return $dataTable->render('transaction.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *

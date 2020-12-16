@@ -21,7 +21,10 @@ class TransactionsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'transactions.action');
+            ->addColumn('action', function ($query) {
+                return '<a href="/transactions/'.$query->id.'" class="btn btn-xs btn-primary" id="transactionsView"><i class="fas fa-eye"></i> View</a>
+                        <a href="/transactions/'.$query->id.'" class="btn btn-xs btn-danger" id="transactionsDelete"><i class="fas fa-trash"></i> Delete</a>';
+            });
     }
 
     /**
@@ -65,16 +68,16 @@ class TransactionsDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            // Column::computed('action')
-            //       ->exportable(false)
-            //       ->printable(false)
-            //       ->width(60)
-            //       ->addClass('text-center'),
+            
             Column::make('id'),
             Column::make('description'),
             Column::make('amount'),
             Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::computed('action')
+                  ->exportable(false)
+                  ->printable(false)
+                  ->width(120)
+                  ->addClass('text-center'),
         ];
     }
 

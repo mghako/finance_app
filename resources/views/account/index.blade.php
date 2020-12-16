@@ -27,9 +27,7 @@
                         <div class="card-title">
                             Accounts List
                         </div>
-                        <div class="card-tools">
-                            <a href="{{ route('accounts.create') }}" class="btn btn-info">Create</a>
-                        </div>
+                        
                     </div>
                     <div class="card-body table-responsive">
                         {{ $dataTable->table() }}

@@ -4,7 +4,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10 mx-auto">
                 <div class="card card-dark">
                     <div class="card-header">
                         <h3 class="card-title">Create Transaction</h3>
@@ -12,7 +12,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     <form class="form-horizontal" action="{{ route('transactions.store') }}" method="POST">
-                    @csrf
+                        @csrf
                         <div class="card-body">
                             {{-- Account --}}
                             <div class="form-group row">
