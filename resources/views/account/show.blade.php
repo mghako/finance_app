@@ -17,20 +17,7 @@
                     <div class="card-body">
                         <label for="">Transaction History</label>
                         <div class="table-responsive">
-                            <table class="table table-hover">
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Amount</th>
-                                    <th>Created at</th>
-                                </tr>
-                                @foreach($account->transactions as $transaction)
-                                <tr>
-                                    <td>{{ $transaction->description }}</td>
-                                    <td>{{ $transaction->amount }}</td>
-                                    <td>{{ $transaction->created_at }}</td>
-                                </tr>
-                                @endforeach
-                            </table>
+                            {!! $dataTable->table() !!}
                         </div>
                     </div>
                 </div>
@@ -38,3 +25,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    {{$dataTable->scripts()}}
+@endpush

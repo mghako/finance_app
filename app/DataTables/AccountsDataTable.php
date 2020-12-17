@@ -25,13 +25,12 @@ class AccountsDataTable extends DataTable
                 return '<a href="/accounts/'.$query->id.'" class="btn btn-xs btn-primary"><i class="fas fa-eye"></i> View</a>
                         <a href="/accounts/delete/'.$query->id.'" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i> Delete</a>';
             });
-            
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\App\Account $model
+     * @param \App\Account $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query(Account $model)
