@@ -23,6 +23,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "admin-lte": "^3.0.5"
+        "admin-lte": "^3.0.5",
+        "datatables.net-bs4": "^1.10.22",
+        "datatables.net-buttons-bs4": "^1.6.5"
     }
 }
