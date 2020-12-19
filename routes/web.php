@@ -26,7 +26,8 @@ Route::get('/profile', 'ProfileController@index')->name('profiles.index')->middl
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::resources([
         'accounts' => 'AccountController',
-        'transactions' => 'TransactionController'
+        'transactions' => 'TransactionController',
+        'topups' => 'AccountTopUpController'
     ]);
 
 });
