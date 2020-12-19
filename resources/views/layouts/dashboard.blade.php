@@ -113,5 +113,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 @stack('scripts')
+@yield('custom-scripts')
 </body>
 </html>
