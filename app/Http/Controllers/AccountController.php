@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\DataTables\AccountsDataTable;
+use App\DataTables\AccountTransactionsDataTable;
 use App\DataTables\Scopes\AccountDataTableScope;
 use App\DataTables\Scopes\AccountTransactionScope;
 use App\DataTables\TransactionsDataTable;
@@ -63,7 +64,7 @@ class AccountController extends Controller
      * @param  \App\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function show(TransactionsDataTable $dataTable, Account $account)
+    public function show(AccountTransactionsDataTable $dataTable, Account $account)
     {
         return $dataTable->addScope(new AccountTransactionScope($account))->render('account.show', compact('account'));
         // return view('account.show', compact('account'));
