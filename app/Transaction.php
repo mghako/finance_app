@@ -10,6 +10,6 @@ class Transaction extends Model
         'amount', 'description', 'user_id', 'account_id'
     ];
     public function account() {
-        return $this->belongsTo('App\Account');
+        return $this->belongsTo('App\Account')->latest();
     }
 }

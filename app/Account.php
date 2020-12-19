@@ -15,6 +15,6 @@ class Account extends Model
     }
 
     public function transactions() {
-        return $this->hasMany('App\Transaction');
+        return $this->hasMany('App\Transaction')->latest();
     }
 }
