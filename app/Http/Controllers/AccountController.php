@@ -94,10 +94,10 @@ class AccountController extends Controller
         try {
             $account->update($request->all());
             DB::commit();
-            return back()->with('success', 'Account Updated!');
+            return back()->withSuccess('Account Updated!');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return back()->with('warning', 'Account Update Failed!');
+            return back()->withWarning('warning', 'Account Update Failed!');
         }
         
     }
