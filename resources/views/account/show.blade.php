@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            {{ $account->name }} <span class="badge badge-info">{{ $account->number }} </span>
+                            {{ $account->name }} <span class="badge badge-info">{{ $account->number }} </span> Balance <span class="badge badge-primary">{{ $account->balance }}</span> <small>Kyats</small>
                         </div>
                         <div class="card-tools">
                             <a href="{{ route('accounts.edit', $account->id) }}"><i class="fas fa-edit"></i>Edit</a>

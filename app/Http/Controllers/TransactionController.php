@@ -57,11 +57,11 @@ class TransactionController extends Controller
 
             DB::commit();
 
-            return back()->with('success', 'Transaction Created!');
+            return back()->withSuccess('Transaction Stored!');
 
         } catch (\Throwable $th) {
             DB::rollBack();
-            return back()->with('warning', 'Transaction Failed!');
+            return back()->withWarning('Transaction Failed!');
         }
         
     }
