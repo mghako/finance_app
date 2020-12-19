@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Account;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreAccountRequest extends FormRequest
@@ -13,7 +14,7 @@ class StoreAccountRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return auth()->user()->can('create', Account::class);
     }
 
     /**

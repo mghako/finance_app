@@ -33,7 +33,7 @@ class AccountPolicy
     {
         return $user->id === $account->user_id
                 ? Response::allow()
-                : Response::deny(' You do not own this post!');
+                : Response::deny(' You do not own this account!');
     }
 
     /**
@@ -44,7 +44,7 @@ class AccountPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->id == auth()->user()->id;
     }
 
     /**
