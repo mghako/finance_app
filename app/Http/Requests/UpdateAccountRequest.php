@@ -13,7 +13,7 @@ class UpdateAccountRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->check();
+        return auth()->user()->can('update-account', $this->account);
     }
 
     /**

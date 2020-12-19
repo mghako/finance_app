@@ -5,15 +5,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                @if (session('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('success') }}
-                    </div>
-                @endif
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mx-auto">
                 <div class="card card-dark">
                     <div class="card-header">
                         <h3 class="card-title">Edit {{ $account->name }}</h3>

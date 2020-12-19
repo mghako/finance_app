@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Account;
+use App\Policies\AccountPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        Account::class => AccountPolicy::class,
     ];
 
     /**
@@ -25,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        // gate for update account
+        Gate::define('update-account', 'App\Policies\AccountPolicy@update');
     }
 }

@@ -45,6 +45,7 @@ class AccountController extends Controller
      */
     public function store(StoreAccountRequest $request)
     {   
+        //$this->authorize('create', Account::class);
         DB::beginTransaction();
         try {
             $user = Auth::user();
@@ -66,6 +67,7 @@ class AccountController extends Controller
      */
     public function show(AccountTransactionsDataTable $dataTable, Account $account)
     {
+        $this->authorize('view', $account);
         return $dataTable->addScope(new AccountTransactionScope($account))->render('account.show', compact('account'));
         // return view('account.show', compact('account'));
     }
