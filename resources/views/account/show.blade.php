@@ -12,7 +12,7 @@
                         </div>
                         <div class="card-tools">
                             <button type="button" class="btn btn-success" id="TopupBtn"><i class="fas fa-plus"></i>Top Up</button>
-                            <a href="{{ route('accounts.edit', $account->id) }}" class="btn btn-warning"><i class="fas fa-edit"></i>Edit</a>
+                            <a href="{{ route('accounts.edit', $account->id) }}" class="btn btn-warning"><i class="fas fa-ban"></i>Disable</a>
                         </div>
                     </div>
                     <div class="card-body">

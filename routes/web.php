@@ -23,6 +23,9 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middle
 // profile controller
 Route::get('/profile', 'ProfileController@index')->name('profiles.index')->middleware('verified');
 
+// Account Disable route
+Route::get('accounts/{id}/disable', 'AccountController@disable')->name('accounts.disable')->middleware('verified');
+
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::resources([
         'accounts' => 'AccountController',

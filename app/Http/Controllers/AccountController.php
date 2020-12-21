@@ -112,6 +112,13 @@ class AccountController extends Controller
      */
     public function destroy(Account $account)
     {
-        //
+        
+    }
+
+    public function disable($id) {
+        $account = Account::findOrFail($id);
+        $account->toggleStatus();
+        $account->save();
+        dd($account);
     }
 }

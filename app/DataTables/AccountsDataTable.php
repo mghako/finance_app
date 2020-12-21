@@ -23,7 +23,7 @@ class AccountsDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('action', function ($query) {
                 return '<a href="/accounts/'.$query->id.'" class="btn btn-xs btn-primary"><i class="fas fa-eye"></i> View</a>
-                        <a href="/accounts/delete/'.$query->id.'" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i> Delete</a>';
+                        <a href="/accounts/'.$query->id.'/disable" class="btn btn-xs btn-warning" id=""><i class="fas fa-ban"></i> Disable</a>';
             });
     }
 
@@ -75,6 +75,7 @@ class AccountsDataTable extends DataTable
             Column::make('id'),
             Column::make('name'),
             Column::make('number'),
+            Column::make('status'),
             Column::make('created_at'),
             Column::computed('action')
                   ->exportable(false)

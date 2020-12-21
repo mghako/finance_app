@@ -19,6 +19,8 @@ class CreateAccountsTable extends Migration
             $table->string('number');
             $table->decimal('balance',8, 2);
             $table->unsignedBigInteger('user_id');
+            $table->boolean('status')->default(true);
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
